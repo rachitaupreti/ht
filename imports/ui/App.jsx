@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import CustomerList from './CustomerList';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import AsiakasBar from './AsiakasBar';
 
-const App = () => (
-  <div>
-    <AppBar position="static">
-		<Toolbar>
-			Welcome to Meteor and asiakas-tunnit!
-		</Toolbar>
-	</AppBar>
-	<br />
-    <CustomerList />
-  </div>
-);
+class App extends Component {
+	state = {
+		page: <CustomerList />,
+	}
+
+	setPage(newPage) {
+		this.setState({
+			page: newPage,
+		});
+	}
+
+	handleChildClick(childData, event) {
+		this.setPage(childData);
+	}
+
+	render() {
+		return(
+			<div>
+				<AsiakasBar onClick={this.handleChildClick.bind(this)} />
+				<br />
+				{this.state.page}
+			</div>
+		);
+	}
+}
 
 export default App;

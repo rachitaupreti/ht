@@ -21,7 +21,7 @@ class Info extends Component {
 
   makeLink(customer) {
     return (
-      <ListItem>
+      <ListItem key={customer._id}>
         <ListItemText primary={customer.name} />
       </ListItem>
     );
