@@ -1,6 +1,5 @@
 import React from 'react';
-import Hello from './Hello.jsx';
-import Info from './Info.jsx';
+import CustomerList from './CustomerList';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
@@ -12,8 +11,7 @@ const App = () => (
 		</Toolbar>
 	</AppBar>
 	<br />
-    <Hello />
-    <Info />
+    <CustomerList />
   </div>
 );
 
