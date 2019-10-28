@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CustomerList from './CustomerList';
-import AsiakasBar from './AsiakasBar';
+import HTAppBar from './HTAppBar';
+import Container from '@material-ui/core/Container';
 
 class App extends Component {
 	state = {
@@ -20,9 +21,11 @@ class App extends Component {
 	render() {
 		return(
 			<div>
-				<AsiakasBar onClick={this.handleChildClick.bind(this)} />
+				<HTAppBar onClick={this.handleChildClick.bind(this)} />
 				<br />
-				{this.state.page}
+				<Container maxWidth="md">
+					{this.state.page}
+				</Container>
 			</div>
 		);
 	}

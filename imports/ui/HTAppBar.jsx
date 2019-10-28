@@ -4,9 +4,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 
 import CustomerList from './CustomerList';
-import Test from './Test';
+import CustomerAdd from './CustomerAdd';
 
-export default class AsiakasBar extends Component {
+export default class HTAppBar extends Component {
 	render() {
 		return(
 			<div>
@@ -14,11 +14,11 @@ export default class AsiakasBar extends Component {
 					<Toolbar>
 						<Button color="inherit"
 							onClick={e => this.props.onClick(<CustomerList />, e)}>
-								Asiakas Lista
+								Customer List
 						</Button>
 						<Button color="inherit" 
-							onClick={e => this.props.onClick(<Test />, e)}>
-								Test
+							onClick={e => this.props.onClick(<CustomerAdd />, e)}>
+								Customer Add
 						</Button>
 					</Toolbar>
 				</AppBar>
