@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import CustomerList from './CustomerList';
+import HomePage from './HomePage';
 import HTAppBar from './HTAppBar';
 import Container from '@material-ui/core/Container';
 
 class App extends Component {
 	state = {
-		page: <CustomerList />,
+		page: <HomePage />,
 	}
 
 	setPage(newPage) {
