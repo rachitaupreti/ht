@@ -1,5 +1,5 @@
 {
-  "name": "asiakas-tunnit",
+  "name": "ht",
   "private": true,
   "scripts": {
     "start": "meteor run",
