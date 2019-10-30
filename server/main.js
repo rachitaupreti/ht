@@ -1,9 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import Customers from '/imports/api/customers';
-
-function insertCustomer(name) {
-	Customers.insert({ name, createdAt: new Date() });
-}
+import Customers, { insertCustomer } from '/imports/api/customers';
 
 Meteor.startup(() => {
 	// if Customers is empty, create it with some dummy customers
