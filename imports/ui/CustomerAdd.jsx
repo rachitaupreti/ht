@@ -19,6 +19,7 @@ class CustomerAdd extends Component {
 		insertCustomer(
 			this.state.value
 		);
+		this.props.previousPage();
 	}
 
 	render() {

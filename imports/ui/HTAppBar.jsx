@@ -22,7 +22,7 @@ export default class HTAppBar extends Component {
 								Customer List
 						</Button>
 						<Button color="inherit" 
-							onClick={e => this.props.onClick(<CustomerAdd />, e)}>
+							onClick={e => this.props.onClick(<CustomerAdd previousPage={this.props.previousPage}/>, e)}>
 								Customer Add
 						</Button>
 					</Toolbar>
