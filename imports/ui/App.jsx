@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import HomePage from './HomePage';
 import HTAppBar from './HTAppBar';
 import Container from '@material-ui/core/Container';
+import { GlobalContext } from './GlobalContext.jsx';
 
 // The main App.
 
@@ -27,14 +28,14 @@ export default function App() {
 	// The page in Container will automatically change when
 	// we change the state in setPage().
 	return(
-		<div>
-			<HTAppBar
-				setPage={setNewPage}
-				previousPage={previousPage} />
-			<br />
-			<Container maxWidth="md">
-				{page}
-			</Container>
-		</div>
+		<GlobalContext.Provider value={{setPage:setNewPage, previousPage:previousPage}}>
+			<div>
+				<HTAppBar />
+				<br />
+				<Container maxWidth="md">
+					{page}
+				</Container>
+			</div>
+		</GlobalContext.Provider>
 	);
 }
