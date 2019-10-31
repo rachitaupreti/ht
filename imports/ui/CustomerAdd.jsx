@@ -1,54 +1,46 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Customers, { insertCustomer } from '../api/customers';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 // CustomerAdd - a component to add a customer to the database
 
-class CustomerAdd extends Component {
-	// We keep the value of the text field in the state
-	state = {
-		value: "",
-	}
+export default function CustomerAdd(props) {
+	// We keep the value of the text field, by using the react useState hook
+	const [value, setValue] = useState("");
 
-	handleChange(event) {
-		this.setState({
-			value: event.target.value
-		});
-	}
+	const handleChange = (event) => {
+		setValue(event.target.value);
+	};
 
-	addCustomer() {
+	const addCustomer = () => {
 		// Insert the text in the text field into the database.
-		insertCustomer(this.state.value);
+		insertCustomer(value);
 
 		// Return to the previous page after the addition.
 		// The previousPage prop came from App.jsx which passed 
 		// it to HTAppBar which then passed it to this component.
-		this.props.previousPage();
-	}
+		props.previousPage();
+	};
 
-	render() {
-		return (
-			<div>
+	return (
+		<div>
 			<TextField id="customer-name"
 				label="Customer Name"
-				onChange={this.handleChange.bind(this)}
+				onChange={handleChange}
 				onKeyPress={(event) => {
 					if (event.key === "Enter") {
 						event.preventDefault();
-						this.addCustomer();
+						addCustomer();
 					}
 				}}
 			/>
 			<br />
 			<br />
 			<Button variant="contained" color="primary"
-					onClick={(event) => { this.addCustomer(); }}>
+				onClick={(event) => { addCustomer(); }}>
 				Add
 			</Button>
-			</div>
-		);
-	}
+		</div>
+	);
 }
-
-export default CustomerAdd;

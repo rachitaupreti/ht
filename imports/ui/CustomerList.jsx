@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import Customers, { deleteCustomer } from '../api/customers';
 import List from '@material-ui/core/List';
@@ -8,35 +8,28 @@ import Chip from '@material-ui/core/Chip';
 
 // CustomerList - component to list the current customers
 
-class CustomerList extends Component {
-
-	// Delete a customer when you press the delete button on the customer Chip
-	handleDelete(customer) {
-		return () => deleteCustomer(customer);
-	};
+function CustomerList(props) {
 
 	// makeLink is called on each customer and a Material UI Chip is returned
-	makeLink(customer) {
+	const makeLink = (customer) => {
 		return (
 			<Chip key={customer._id}
 				label={customer.name}
-				onDelete={this.handleDelete(customer)}
+				onDelete={() => deleteCustomer(customer)}
 			/>
 		);
-	}
+	};
 
-	render() {
-		const customers = this.props.customers.map(
-			customer => this.makeLink(customer)
-		);
+	const customers = props.customers.map(
+		customer => makeLink(customer)
+	);
 
-		return (
-			<div>
-				<h2>List of customers:</h2>
-				{ customers }
-			</div>
-		);
-	}
+	return (
+		<div>
+			<h2>List of customers:</h2>
+			{ customers }
+		</div>
+	);
 }
 
 // withTracker keeps track of all the changes to the customer list
