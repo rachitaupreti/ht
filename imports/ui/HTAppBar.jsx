@@ -10,9 +10,27 @@ import { GlobalContext } from './GlobalContext.jsx';
 
 // HTAppBar - AppBar component for the project
 
+const Pages = [
+	{ id: 1, name: 'Home', value: <HomePage /> },
+	{ id: 2, name: 'Customer List', value: <CustomerList /> },
+	{ id: 3, name: 'Customer Add', value: <CustomerAdd /> }
+];
+
 export default function HTAppBar() {
 
 	const setPage = useContext(GlobalContext).setPage;
+
+	const makeButton = (page) => {
+		return(
+			<Button key={page.id} color="inherit"
+				onClick={() => setPage(page.value)}>
+				{page.name}
+			</Button>
+		);
+	};
+	const pages = Pages.map(
+		page => makeButton(page)
+	);
 
 	// We create a Button for each page we have and add an onClick function
 	// which calls the setPage function we passed to the GlobalContext from App.jsx
@@ -20,18 +38,7 @@ export default function HTAppBar() {
 		<div>
 			<AppBar position="static">
 				<Toolbar>
-					<Button color="inherit"
-						onClick={() => setPage(<HomePage />)}>
-						Home
-					</Button>
-					<Button color="inherit"
-						onClick={() => setPage(<CustomerList />)}>
-						Customer List
-					</Button>
-					<Button color="inherit"
-						onClick={() => setPage(<CustomerAdd />)}>
-						Customer Add
-					</Button>
+					{pages}
 				</Toolbar>
 			</AppBar>
 		</div>
