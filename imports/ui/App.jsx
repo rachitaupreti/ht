@@ -5,6 +5,8 @@ import CustomerAdd from './CustomerAdd';
 import HTAppBar from './HTAppBar';
 import Container from '@material-ui/core/Container';
 import { useRoutes } from 'hookrouter';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import lightBlue from '@material-ui/core/colors/lightBlue';
 
 // our route table
 const routes = {
@@ -13,18 +15,24 @@ const routes = {
   '/customeradd': () => <CustomerAdd />
 };
 
+const theme = createMuiTheme({
+  palette: {
+    primary: lightBlue,
+  },
+});
+
 // The main App.
 
 export default function App() {
   const routeResult = useRoutes(routes);
 
   return(
-    <div>
+    <ThemeProvider theme={theme}>
       <HTAppBar />
       <br />
       <Container maxWidth="md">
         {routeResult}
       </Container>
-    </div>
+    </ThemeProvider>
   );
 }
