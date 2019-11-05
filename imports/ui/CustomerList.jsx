@@ -1,4 +1,5 @@
 import React from 'react';
+import Typography from "@material-ui/core/Typography";
 import { withTracker } from 'meteor/react-meteor-data';
 import Customers, { deleteCustomer } from '../api/customers';
 import Chip from '@material-ui/core/Chip';
@@ -23,8 +24,13 @@ function CustomerList(props) {
 
   return (
     <div>
-      <h2>List of customers:</h2>
-      { customers }
+      <Typography
+        variant="h4">
+        List of customers
+      </Typography>
+      <div style={{paddingTop: 10}}>
+        { customers }
+      </div>
     </div>
   );
 }
