@@ -9,7 +9,6 @@ import { A } from 'hookrouter';
 const Pages = [
   { id: 1, name: 'Home', value: '/' },
   { id: 2, name: 'Customer List', value: '/customers' },
-  { id: 3, name: 'Customer Add', value: '/customeradd' }
 ];
 
 export default function HTAppBar() {
