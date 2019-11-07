@@ -11,7 +11,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
 import TextField from '@material-ui/core/TextField';
 import AddIcon from '@material-ui/icons/Add';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 // CustomerList - component to list the current customers
 
@@ -25,7 +25,6 @@ const useStyles = makeStyles(theme => ({
 
 function CustomerList(props) {
   const classes = useStyles();
-  const theme = useTheme();
   const [dialogOpen, setDialogOpen] = useState(false);
   const [newValue, setNewValue] = useState("");
 

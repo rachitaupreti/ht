@@ -1,6 +1,6 @@
 import React from 'react';
 import HomePage from './HomePage';
-import CustomerList from './CustomerList';
+import Customers from './Customers';
 import HTAppBar from './HTAppBar';
 import Container from '@material-ui/core/Container';
 import { useRoutes } from 'hookrouter';
@@ -10,7 +10,7 @@ import lightBlue from '@material-ui/core/colors/lightBlue';
 // our route table
 const routes = {
   '/': () => <HomePage />,
-  '/customers': () => <CustomerList />,
+  '/customers': () => <Customers />,
 };
 
 const theme = createMuiTheme({
