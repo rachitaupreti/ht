@@ -12,6 +12,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import TextField from '@material-ui/core/TextField';
 import AddIcon from '@material-ui/icons/Add';
 import { makeStyles } from '@material-ui/core/styles';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 // CustomerList - component to list the current customers
 
@@ -21,11 +24,17 @@ const useStyles = makeStyles(theme => ({
     bottom: theme.spacing(2),
     right: theme.spacing(2),
   },
+  snackbar: {
+    [theme.breakpoints.down('xs')]: {
+      bottom: 90,
+    },
+  },
 }));
 
 function CustomerList(props) {
   const classes = useStyles();
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [newValue, setNewValue] = useState("");
 
   // makeLink is called on each customer and a Material UI Chip is returned
@@ -50,9 +59,14 @@ function CustomerList(props) {
     setDialogOpen(false);
   };
 
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+
   const handleAdd = () => {
     insertCustomer(newValue)
     setDialogOpen(false);
+    setSnackbarOpen(true);
   };
 
   const handleChange = (event) => {
@@ -68,6 +82,26 @@ function CustomerList(props) {
       <div style={{paddingTop: 10}}>
         { customers }
       </div>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+        ContentProps={{
+          'aria-describedby': 'message-id',
+        }}
+        message={ <span id="message-id">Customer added</span> }
+        action={[
+          <IconButton
+            key="close"
+            aria-label="close"
+            color="inherit"
+            onClick={handleSnackbarClose}
+          >
+            <CloseIcon />
+          </IconButton>,
+        ]}
+        className={classes.snackbar}
+      />
       <Fab color="primary" aria-label="add" className={classes.fab}
         onClick={handleClickOpen}>
         <AddIcon />
